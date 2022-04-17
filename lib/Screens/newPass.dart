@@ -52,14 +52,18 @@ class _NewPassScreenState extends State<NewPassScreen> {
                         autofocus: true,
                         controller: newPasswordController,
                         obscureText: true,
+                        maxLength: 16,
                         validator: (value) {
-                          RegExp regex = new RegExp(r'^.{6,}$');
+                          // RegExp regex = new RegExp(r'^.{6,}$');
                           if (value!.isEmpty) {
                             return ("Please enter your password");
                           }
-                          if (!regex.hasMatch(value)) {
-                            return ("Enter Valid Password(Min. 6 Charcters");
+                          if (!value.isValidPassword) {
+                            return ('Enter valid password');
                           }
+                          // if (!regex.hasMatch(value)) {
+                          //   return ("Enter Valid Password(Min. 6 Charcters");
+                          // }
                         },
                         onSaved: (value) {
                           newPasswordController.text = value!;
@@ -73,14 +77,18 @@ class _NewPassScreenState extends State<NewPassScreen> {
                         autofocus: true,
                         controller: newPasswordController,
                         obscureText: true,
+                        maxLength: 16,
                         validator: (value) {
-                          RegExp regex = new RegExp(r'^.{6,}$');
+                          
                           if (value!.isEmpty) {
                             return ("Please enter your password");
                           }
-                          if (!regex.hasMatch(value)) {
-                            return ("Enter Valid Password(Min. 6 Charcters");
+                          if (!value.isValidPassword) {
+                            return ('Enter valid password');
                           }
+                          // if (!regex.hasMatch(value)) {
+                          //   return ("Enter Valid Password(Min. 6 Charcters");
+                          // }
                         },
                         onSaved: (value) {
                           newPasswordController.text = value!;

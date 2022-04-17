@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '/Screens/home_screen.dart';
 import '/classes/classes.dart';
@@ -27,16 +28,7 @@ class _LogniScreenState extends State<LogniScreen> {
   @override
   Widget build(BuildContext context) {
     //   keyboardType: TextInputType.name,
-    //   validator: (value) {
-    //     if (value!.isEmpty) {
-    //       return ("Enter some value");
-    //     }
-    //     return null;
-    //   },
-    //   onSaved: (value) {
-    //     userNameController.text = value!;
-    //   },
-    // );
+
     // Password Fields
     // final passwordField = TextFormField(
     //   textInputAction: TextInputAction.done,
@@ -75,10 +67,17 @@ class _LogniScreenState extends State<LogniScreen> {
                         autofocus: true,
                         controller: userNameController,
                         obscureText: false,
+                        maxLength: 10,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(
+                            RegExp(r"[0-9]"),
+                          )
+                        ],
                         validator: (value) {
-                          if (value!.isEmpty) {
-                            return ("Enter some value");
+                          if (value!.isEmpty && value.isValidPhone) {
+                            return ('Enter valid phone');
                           }
+
                           return null;
                         },
                         onSaved: (value) {
@@ -93,14 +92,18 @@ class _LogniScreenState extends State<LogniScreen> {
                         autofocus: true,
                         controller: passwordController,
                         obscureText: true,
+                        maxLength: 16,
                         validator: (value) {
-                          RegExp regex = new RegExp(r'^.{6,}$');
+                          // RegExp regex = new RegExp(r'^.{6,}$');
                           if (value!.isEmpty) {
                             return ("Please enter your password");
                           }
-                          if (!regex.hasMatch(value)) {
-                            return ("Enter Valid Password(Min. 6 Charcters");
+                          if (!value.isValidPassword) {
+                            return ('Enter valid password');
                           }
+                          // if (!regex.hasMatch(value)) {
+                          //   return ("Enter Valid Password(Min. 6 Charcters");
+                          // }
                         },
                         onSaved: (value) {
                           passwordController.text = value!;
@@ -109,10 +112,13 @@ class _LogniScreenState extends State<LogniScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      OnTapText(text:'Forgot Password?',onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>  ForgotPassScreen()));
-                          },),
+                      OnTapText(
+                        text: 'Forgot Password?',
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ForgotPassScreen()));
+                        },
+                      ),
                       SizedBox(
                         height: 20,
                       ),
@@ -168,7 +174,7 @@ class _LogniScreenState extends State<LogniScreen> {
     );
   }
 
-  // Login Function
+  //Login Function;
   // void signIn(String email, String password) async {
   //   if (_formKey.currentState!.validate()) {
   //     await _auth.signInWithEmailAndPassword(email: email, password: password)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/gestures.dart';
 
@@ -11,6 +12,8 @@ class InputField extends StatelessWidget {
     required this.obscureText,
     this.validator,
     this.onSaved,
+    this.inputFormatters,
+    required this.maxLength,
   });
 
   final String inputFld;
@@ -19,6 +22,8 @@ class InputField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final String? Function(String?)? onSaved;
+  final List<TextInputFormatter>? inputFormatters;
+  final int maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +32,15 @@ class InputField extends StatelessWidget {
       child: TextFormField(
         autofocus: autofocus,
         controller: controller,
+        inputFormatters: inputFormatters,
         textInputAction: TextInputAction.next,
         obscureText: obscureText,
         validator: validator,
         onSaved: onSaved,
+        maxLength: maxLength,
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
+          counterText: "",
           hintText: inputFld,
           hintStyle: GoogleFonts.openSans(
             textStyle: Theme.of(context).textTheme.headline4,
@@ -126,5 +134,22 @@ class NextButton extends StatelessWidget {
                   color: Color.fromARGB(255, 255, 255, 255),
                   fontWeight: FontWeight.bold))),
     );
+  }
+}
+
+extension extString on String {
+  bool get isValidPhone {
+    final phoneRegExp = RegExp(r"^\+?0[0-9]{10}$");
+    return phoneRegExp.hasMatch(this);
+  }
+
+  bool get isValidPassword {
+    final passwordRegExp = RegExp(
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
+    return passwordRegExp.hasMatch(this);
+  }
+
+  bool get isNotNull {
+    return this != null;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
@@ -55,6 +56,12 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                         autofocus: true,
                         controller: userNameController,
                         obscureText: false,
+                        maxLength: 10,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(
+                            RegExp(r"[0-9]"),
+                          )
+                        ],
                         validator: (value) {
                           if (value!.isEmpty) {
                             return ("Enter some value");
