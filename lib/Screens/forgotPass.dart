@@ -73,7 +73,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                         },
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
                       NextButton(
                           onPress: () {
@@ -99,42 +99,6 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
             ),
           ));
         }));
-  }
-
-  Widget CompanyName() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            children: const <Widget>[
-              Text("Debt",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: "Sunflower",
-                      fontSize: 48,
-                      color: Color(0xFFE54252),
-                      fontWeight: FontWeight.w500)),
-              Text("enforce",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: "Sunflower",
-                      fontSize: 48,
-                      color: Color(0xFF1C2F97),
-                      fontWeight: FontWeight.w500)),
-            ],
-          ),
-          Text("Agent",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: "Sunflower",
-                  fontSize: 32,
-                  color: Color(0xFF1C2F97),
-                  fontWeight: FontWeight.w500)),
-        ],
-      ),
-    );
   }
 
   Widget otpField() {

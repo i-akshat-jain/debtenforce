@@ -83,13 +83,8 @@ class OnTapText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-          149,
-          0,
-          0,
-          0,
-        ),
+      child: Align(
+      alignment: Alignment.centerRight,
         child: RichText(
           text: TextSpan(
             text: text,
@@ -126,13 +121,55 @@ class NextButton extends StatelessWidget {
           //signIn(userNameController.text, passwordController.text);
           elevation: 5,
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          minWidth: MediaQuery.of(context).size.width,
+          minWidth: MediaQuery.of(context).size.width/2,
           child: Text(text,
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 20,
                   color: Color.fromARGB(255, 255, 255, 255),
                   fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class CompanyName extends StatelessWidget {
+  const CompanyName({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const <Widget>[
+              Text("Debt",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: "Sunflower",
+                      fontSize: 48,
+                      color: Color(0xFFE54252),
+                      fontWeight: FontWeight.w500)),
+              Text("enforce",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: "Sunflower",
+                      fontSize: 48,
+                      color: Color(0xFF1C2F97),
+                      fontWeight: FontWeight.w500)),
+            ],
+          ),
+          Text("Agent",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontFamily: "Sunflower",
+                  fontSize: 32,
+                  color: Color(0xFF1C2F97),
+                  fontWeight: FontWeight.w500)),
+        ],
+      ),
     );
   }
 }

@@ -17,7 +17,8 @@ final String baseurl = "http://localhost:4000/";
 
 class _NewPassScreenState extends State<NewPassScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController newPasswordController = new TextEditingController();
+  final TextEditingController newPasswordController =
+      new TextEditingController();
 
   //firebase
   final _auth = FirebaseAuth.instance.useAuthEmulator('10.0.2.2', 9099);
@@ -79,7 +80,6 @@ class _NewPassScreenState extends State<NewPassScreen> {
                         obscureText: true,
                         maxLength: 16,
                         validator: (value) {
-                          
                           if (value!.isEmpty) {
                             return ("Please enter your password");
                           }
@@ -95,7 +95,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
                         },
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
                       NextButton(
                           onPress: () {
@@ -112,41 +112,4 @@ class _NewPassScreenState extends State<NewPassScreen> {
           ));
         }));
   }
-
-  Widget CompanyName() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            children: const <Widget>[
-              Text("Debt",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: "Sunflower",
-                      fontSize: 48,
-                      color: Color(0xFFE54252),
-                      fontWeight: FontWeight.w500)),
-              Text("enforce",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: "Sunflower",
-                      fontSize: 48,
-                      color: Color(0xFF1C2F97),
-                      fontWeight: FontWeight.w500)),
-            ],
-          ),
-          Text("Agent",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: "Sunflower",
-                  fontSize: 32,
-                  color: Color(0xFF1C2F97),
-                  fontWeight: FontWeight.w500)),
-        ],
-      ),
-    );
-  }
-
 }
