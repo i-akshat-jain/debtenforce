@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "829750056966",
+    "project_id": "debtenforce-e5690",
+    "storage_bucket": "debtenforce-e5690.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829750056966:android:3782dbdb558b78d0d0cb87",
+        "android_client_info": {
+          "package_name": "com.example.debtenforce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829750056966-ittqrqv8acprrvaspri0sj69oqosh217.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtVIMYaYX_BzXhGxNQycCOjDW2hn-Owwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829750056966-ittqrqv8acprrvaspri0sj69oqosh217.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
